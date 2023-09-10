@@ -37,6 +37,8 @@ class Datapns extends CI_Controller
 		if (sizeof($this->session->userdata('user')) < 1) die();
 		if (!in_array($this->session->userdata('user')['role'], ['OPERATOR', 'MAINTAINER'])) die();
 
+		$search = "";
+
 		$start = (int) $this->input->post("start");
 		$length = (int) $this->input->post("length");
 		if ($length > 0) $filter = " LIMIT " . $length . " OFFSET " . $start;
