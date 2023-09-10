@@ -8,8 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="generator" content="Hugo 0.87.0" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-    <meta name="description" content="SIDKD Kab Mimika.">
-    <title>SIDKD</title>
+    <meta name="description" content="SITAWA Kab Mimika.">
+    <title>SITAWA</title>
     <link rel="shortcut icon" type="image/x-icon" href="<?=base_url("logo.png"); ?>">
 
     <!-- STYLESHEETS -->

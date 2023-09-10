@@ -11,7 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
   <meta name="description"
     content="The login page allows a user to gain access to an application by entering their username and password or by authenticating using a social media login.">
-  <title>Login | SIDKD</title>
+  <title>Login | SITAWA</title>
   <link rel="shortcut icon" type="image/x-icon" href="<?= base_url("logo.png"); ?>">
 
   <!-- STYLESHEETS -->

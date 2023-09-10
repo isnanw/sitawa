@@ -10,8 +10,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <!-- Page title and information -->
             <h1 class="page-title mb-2"><?php echo $judul; ?></h1>
-            <h2 class="h5">Sistem Informasi Kepegawaian Berbasis Digital (SIDKD)</h2>
-            <p>Penggunaan SIDKD ini dalam rangka peningkatan kualitas pelayanan publik pada <b><u>Dinas Perumahan, Kawasan Pemukiman dan Pertanahan Kabupaten Mimika</u></b> dengan memanfaatkan teknologi informasi berupa Aplikasi Website.</p>
+            <h2 class="h5">Sistem Informasi Kepegawaian Berbasis Digital (SITAWA)</h2>
+            <p>Penggunaan SITAWA ini dalam rangka peningkatan kualitas pelayanan publik pada <b><u>Dinas Perumahan, Kawasan Pemukiman dan Pertanahan Kabupaten Mimika</u></b> dengan memanfaatkan teknologi informasi berupa Aplikasi Website.</p>
             <!-- END : Page title and information -->
 
         </div>
@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <footer class="mt-auto">
         <div class="content__boxed">
             <div class="content__wrap py-3 py-md-1 d-flex flex-column flex-md-row align-items-md-center">
-                <div class="text-nowrap mb-4 mb-md-0">Copyright &copy; 2022 <a href="#" class="ms-1 btn-link fw-bold">SIDKD Kab Mimika</a></div>
+                <div class="text-nowrap mb-4 mb-md-0">Copyright &copy; 2022 <a href="#" class="ms-1 btn-link fw-bold">SITAWA Kab Mimika</a></div>
                 <nav class="nav flex-column gap-1 flex-md-row gap-md-3 ms-md-auto" style="row-gap: 0 !important;">
                     <!-- <a class="nav-link px-0" href="#">Policy Privacy</a>
                     <a class="nav-link px-0" href="#">Terms and conditions</a>

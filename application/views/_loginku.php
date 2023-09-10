@@ -10,7 +10,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
   <meta name="description"
     content="The login page allows a user to gain access to an application by entering their username and password or by authenticating using a social media login.">
-  <title>Login | SIDKD</title>
+  <title>Login | SITAWA</title>
   <link rel="shortcut icon" type="image/x-icon" href="<?= base_url("logo.png"); ?>">
 
   <!-- STYLESHEETS -->
@@ -71,7 +71,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <div class="card-body">
 
               <div class="text-center">
-                <h1 style="color: white;" class="h1">LOGIN | SIDKD</h1>
+                <h1 style="color: white;" class="h1">LOGIN | SITAWA</h1>
                 <p style="color: white;">SISTEM INFORMASI KEPEGAWAIAN BERBASIS DIGITAL</p>
                 <hr style="color: white;">
                 <br><small style='color:red'><?= $this->session->flashdata('login_msg'); ?></small>
