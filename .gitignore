@@ -3,6 +3,9 @@
 server.php
 error_log
 
+templateExcel.xls
+SQL/*
+
 application/config/config.php
 application/config/database.php
 
