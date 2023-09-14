@@ -68,9 +68,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <h1 class="page-title mb-2">
                 <?php echo $judul; ?>
             </h1>
-            <h2 class="h5">Sistem Informasi Data Kepegawaian Distrik Kuala Kencana Berbasis Digital (SITAWA)</h2>
-            <p>Penggunaan SITAWA ini dalam rangka peningkatan kualitas pelayanan publik pada <b><u>Distrik Kuala Kencana
-                        Kabupaten Mimika</u></b> dengan memanfaatkan teknologi informasi berupa Aplikasi Website.</p>
+            <h2 class="h5"><b>SI_TAWA</b> (Sistem Informasi Data Kepegawaian) Dalam Percepatan Layanan Kepegawaian Pada
+                Distrik Kuala Kencana</h2>
+            <p>Penggunaan SI_TAWA ini dalam rangka peningkatan kualitas pelayanan publik pada <b><u>Distrik Kuala
+                        Kencana Kabupaten Mimika</u></b> dengan memanfaatkan teknologi informasi berupa Aplikasi
+                berbasis Website.</p>
             <hr>
             <!-- END : Page title and information -->
 
@@ -150,14 +152,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="card">
                     <figure class="highcharts-figure">
                         <div id="container"></div>
-                        <!-- <p class="highcharts-description">
-                        A basic column chart comparing emissions by pollutant.
-                        Oil and gas extraction has the overall highest amount of
-                        emissions, followed by manufacturing industries and mining.
-                        The chart is making use of the axis crosshair feature, to highlight
-                        years as they are hovered over.
-                    </p> -->
                     </figure>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <figure class="highcharts-figure">
+                            <div id="container_pns"></div>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <figure class="highcharts-figure">
+                            <div id="container_cpns"></div>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <figure class="highcharts-figure">
+                            <div id="container_honorer"></div>
+                        </figure>
+                    </div>
                 </div>
             </div>
         </div>
@@ -229,6 +248,52 @@ if (@$tanggalpanggkat != Null or @$tanggalkgb != Null) {
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- END - CONTENTS -->
 
+<?php
+$dataCategories = array();
+$dataSeries1 = array();
+
+$dataArray = [];
+$dataPNS = [];
+$dataCPNS = [];
+$dataHONORER = [];
+
+$name = array(
+    "PNS/ASN",
+    "CPNS",
+    "HONORER",
+);
+$color = array(
+    "#FF1744",
+    "#FFB300",
+    "#009688",
+);
+
+foreach ($jenisdokumen as $data):
+    $dataArray[] = [$data['kodeberkas'], (float) $data['jumlah']];
+endforeach;
+
+foreach ($dokumenpns as $pns):
+    $dataPNS[] = [
+        'name' => $pns['kodeberkas'],
+        'y' => $pns['jumlah']
+    ];
+endforeach;
+
+foreach ($dokumencpns as $cpns):
+    $dataCPNS[] = [
+        'name' => $cpns['kodeberkas'],
+        'y' => $cpns['jumlah']
+    ];
+endforeach;
+
+foreach ($dokumenhonorer as $honor):
+    $dataHONORER[] = [
+        'name' => $honor['kodeberkas'],
+        'y' => $honor['jumlah']
+    ];
+endforeach;
+
+?>
 
 <script language="javascript">
     // $(function () {
@@ -268,27 +333,20 @@ if (@$tanggalpanggkat != Null or @$tanggalkgb != Null) {
             type: 'column'
         },
         title: {
-            text: 'Rekap Dokumen Kepegawaian'
+            text: 'Rekap Dokumen'
         },
         subtitle: {
-            text: 'Berdasarkan Jenis Dokumen yang Diunggah'
+            text: 'Yang Terunggah di SI_TAWA'
         },
         xAxis: {
-            categories: [
-                'KTP',
-                'KK',
-                'AKTALAHIR',
-                'BPJS',
-                'IJAZAH_D3',
-                'IJAZAH_S1',
-                'IJAZAH_S2',
-                'KGB',
-                'SK_HONORER',
-                'SK_JABATAN',
-                'SK_KP',
-                'TASPEN'
-            ],
-            crosshair: true
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
         },
         yAxis: {
             min: 0,
@@ -296,35 +354,138 @@ if (@$tanggalpanggkat != Null or @$tanggalkgb != Null) {
                 text: 'Jumlah (Dokumen)'
             }
         },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.0f} dokumen</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
+        legend: {
+            enabled: false
         },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
+        tooltip: {
+            pointFormat: 'Jumlah: <b>{point.y:.0f} Dokumen</b>'
         },
         series: [{
-            name: 'PNS/ASN',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4,
-                194.1, 95.6, 54.4]
+            name: 'Population',
+            colorByPoint: true,
+            groupPadding: 0,
+            data: <?= json_encode($dataArray, JSON_NUMERIC_CHECK); ?>,
+            dataLabels: {
+            enabled: false,
+            rotation: -90,
+            color: '#FFFFFF',
+            align: 'right',
+            format: '{point.y:.0f}', // one decimal
+            y: 10, // 10 pixels down from the top
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    }]
+});
 
-        }, {
-            name: 'CPNS',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3,
-                51.2]
+Highcharts.chart('container_pns', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Dokumen PNS',
+        align: 'center'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.y:.0f} Dokumen</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: 'Dokumen'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Jumlah',
+        colorByPoint: true,
+        data: <?= json_encode($dataPNS, JSON_NUMERIC_CHECK); ?>
+    }]
+});
 
-        }, {
-            name: 'Honorer',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8,
-                51.1]
+Highcharts.chart('container_cpns', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Dokumen CPNS',
+        align: 'center'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.y:.0f} Dokumen</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: 'Dokumen'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Jumlah',
+        colorByPoint: true,
+        data: <?= json_encode($dataCPNS, JSON_NUMERIC_CHECK); ?>
+    }]
+});
 
-        }]
-    });
+
+Highcharts.chart('container_honorer', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Dokumen Honorer',
+        align: 'center'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.y:.0f} Dokumen</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: 'Dokumen'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Jumlah',
+        colorByPoint: true,
+        data: <?= json_encode($dataHONORER, JSON_NUMERIC_CHECK); ?>
+    }]
+});
 </script>

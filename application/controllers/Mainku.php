@@ -27,6 +27,119 @@ class Mainku extends CI_Controller
 
       $data = [
         'judul' => "Dashboard",
+        // 'jenisdokumen'  => $this->db->order_by('kodeberkas', 'ASC')->get('jenisdok')->result_array(),
+        'jenisdokumen'    => $this->db->query('select
+                                              j.kodeberkas,
+                                              coalesce(COUNT(p.*),
+                                              0) as jumlah
+                                            from jenisdok j
+                                            left join
+                                                dms d
+                                            on
+                                              (j.kodeberkas = d.kodeberkas)
+                                            left join (
+                                              select
+                                                nip,
+                                                convert_from(decrypt(data,
+                                                nip::bytea,
+                                                \'aes\'),
+                                                \'UTF8\')::jsonb as data
+                                              from
+                                                pns
+                                                ) p
+                                            on
+                                              (p.data ->>\'nip\' = d.uname)
+                                            where
+                                              d.kodeberkas is not null
+                                            --	and p.data ->> \'status_kepegawaian\' = \'CPNS\'
+                                            group by
+                                              j.kodeberkas
+                                            order by
+                                              jumlah DESC;')->result_array(),
+      'dokumenpns' => $this->db->query('select
+                                              j.kodeberkas,
+                                              coalesce(COUNT(p.*),
+                                              0) as jumlah
+                                            from jenisdok j
+                                            left join
+                                                dms d
+                                            on
+                                              (j.kodeberkas = d.kodeberkas)
+                                            left join (
+                                              select
+                                                nip,
+                                                convert_from(decrypt(data,
+                                                nip::bytea,
+                                                \'aes\'),
+                                                \'UTF8\')::jsonb as data
+                                              from
+                                                pns
+                                                ) p
+                                            on
+                                              (p.data ->>\'nip\' = d.uname)
+                                            where
+                                              d.kodeberkas is not null
+                                              and p.data ->> \'status_kepegawaian\' = \'PNS\'
+                                            group by
+                                              j.kodeberkas
+                                            order by
+                                              jumlah DESC;')->result_array(),
+      'dokumencpns' => $this->db->query('select
+                                              j.kodeberkas,
+                                              coalesce(COUNT(p.*),
+                                              0) as jumlah
+                                            from jenisdok j
+                                            left join
+                                                dms d
+                                            on
+                                              (j.kodeberkas = d.kodeberkas)
+                                            left join (
+                                              select
+                                                nip,
+                                                convert_from(decrypt(data,
+                                                nip::bytea,
+                                                \'aes\'),
+                                                \'UTF8\')::jsonb as data
+                                              from
+                                                pns
+                                                ) p
+                                            on
+                                              (p.data ->>\'nip\' = d.uname)
+                                            where
+                                              d.kodeberkas is not null
+                                              and p.data ->> \'status_kepegawaian\' = \'CPNS\'
+                                            group by
+                                              j.kodeberkas
+                                            order by
+                                              jumlah DESC;')->result_array(),
+      'dokumenhonorer' => $this->db->query('select
+                                              j.kodeberkas,
+                                              coalesce(COUNT(p.*),
+                                              0) as jumlah
+                                            from jenisdok j
+                                            left join
+                                                dms d
+                                            on
+                                              (j.kodeberkas = d.kodeberkas)
+                                            left join (
+                                              select
+                                                nip,
+                                                convert_from(decrypt(data,
+                                                nip::bytea,
+                                                \'aes\'),
+                                                \'UTF8\')::jsonb as data
+                                              from
+                                                pns
+                                                ) p
+                                            on
+                                              (p.data ->>\'nip\' = d.uname)
+                                            where
+                                              d.kodeberkas is not null
+                                              and p.data ->> \'status_kepegawaian\' = \'Honorer\'
+                                            group by
+                                              j.kodeberkas
+                                            order by
+                                              jumlah DESC;')->result_array(),
         'jumlahpegawai' => $this->mmd->countPegawai(),
         'jumlahcpns' => $this->mmd->countCPNS(),
         'jumlahpns' => $this->mmd->countPNS(),
