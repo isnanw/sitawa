@@ -9,14 +9,14 @@
 
                 <!-- Brand logo rand-img-->
 
-                <!-- <a href="<?= base_url(); ?>" class="brand-img stretched-link">
-                                    <center><img src="<?= base_url(); ?>assets/img/logo_bg_bk.png" alt="Logo" class="" width="100" height="40"></center>
-                                </a> -->
+                <a href="<?= base_url(); ?>" class="brand-img stretched-link">
+                                    <img src="<?= base_url(); ?>assets/img/lgsj.png" alt="Logo" class="" width="100" height="40">
+                                </a>
 
 
                 <!-- Brand title -->
-                <div class="brand-title"><img src="<?= base_url(); ?>assets/img/logo_bg_bk.png" alt="Logo" class="" width="100"
-                        height="40"></div>
+                <div class="brand-title"><img src="<?= base_url(); ?>assets/img/lgtulbk.png" alt="Logo" class="" width="100"
+                        height="30"></div>
 
                 <!-- You can also use IMG or SVG instead of a text element. -->
 
