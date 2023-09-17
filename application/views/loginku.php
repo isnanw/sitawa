@@ -38,7 +38,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <div class="login-content">
       <form id="loginform" action="<?= base_url(); ?>auth/dologin" method="post">
         <img decoding="async" src="<?= base_url(); ?>assets/img/logo.png" />
-        <h2 class="title">Welcome</h2>
+        <h2 class="title">LOGIN</h2>
         <p style="color: #011970"><b>SISTEM INFORMASI DATA KEPEGAWAIAN</b></p>
         <p>Distrik Kuala Kencana Kabupaten Mimika</p>
         <small style='color:red'>
