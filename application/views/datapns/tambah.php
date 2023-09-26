@@ -35,7 +35,7 @@
 
                         <div class="col-md-6">
                             <label for="opd" class="form-label">OPD</label>
-                            <input required id="opd" name="opd" type="text" class="form-control" value="DINAS PERUMAHAN, KAWASAN PERMUKIMAN DAN PERTANAHAN" readonly>
+                            <input required id="opd" name="opd" type="text" class="form-control" value="Distrik Kuala Kencana" readonly>
                         </div>
 
                         <div class="col-md-6">

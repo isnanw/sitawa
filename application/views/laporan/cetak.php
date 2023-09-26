@@ -10,7 +10,7 @@
     <div style="width:auto; margin: auto;">
         <center>
             <h3>LAPORAN KARYAWAN STATUS KEPEGAWAIAN <?= $sfilter; ?></h3>
-            <h4>DINAS PERUMAHAN, KAWASAN PERMUKIMAN DAN PERTANAHAN</h4>
+            <h4>Distrik Kuala Kencana</h4>
             <table border="1" width="100%" style="border-collapse:collapse;">
                 <thead>
                     <tr>

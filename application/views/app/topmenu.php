@@ -15,7 +15,7 @@
 
 
                 <!-- Brand title -->
-                <div class="brand-title"><img src="<?= base_url(); ?>assets/img/lgtulbk.png" alt="Logo" class="" width="100"
+                <div class="brand-title"><img src="<?= base_url(); ?>assets/img/lgtulwt.png" alt="Logo" class="" width="100"
                         height="30"></div>
 
                 <!-- You can also use IMG or SVG instead of a text element. -->

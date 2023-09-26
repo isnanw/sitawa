@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
 
                     <blockquote class="blockquote">
-                        <p>DINAS PERUMAHAN, KAWASAN PERMUKIMAN DAN PERTANAHAN</p>
+                        <p>Distrik Kuala Kencana</p>
                     </blockquote>
                     <figcaption class="blockquote-footer mb-xl-0">
                         Kabupaten Mimika

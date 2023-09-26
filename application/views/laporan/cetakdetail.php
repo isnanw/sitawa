@@ -10,7 +10,7 @@
     <div style="width:auto; margin: auto;">
         <center>
             <h3>DETAIL PEGAWAI</h3>
-            <h4>DINAS PERUMAHAN, KAWASAN PERMUKIMAN DAN PERTANAHAN</h4>
+            <h4>Distrik Kuala Kencana</h4>
             <table width="100%" style="border-collapse:collapse;">
                 <tr>
                     <td width="45%">NIP</td>
