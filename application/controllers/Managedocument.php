@@ -323,7 +323,7 @@ class ManageDocument extends CI_Controller {
 		$result['draw'] = $this->input->post("draw");
 		$result['recordsTotal'] = (int) $totaldata;
 		$result['recordsFiltered'] = (int) $totaldata;
-		ini_set('memory_limit', '44M');
+		ini_set('memory_limit', '128M');
 		echo json_encode($result);
 	}
 
