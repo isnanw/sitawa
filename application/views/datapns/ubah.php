@@ -67,8 +67,15 @@
                         </div>
 
                         <div class="col-md-4">
+                          <?php
+                          $tanggal_databasetmtpg = $list['tmt_pangkat_golongan'];
+                          // Membagi tanggal menjadi komponen (hari, bulan, tahun)
+                          list($hari, $bulan, $tahun) = explode('/', $tanggal_databasetmtpg);
+                          // Mengonversi format tanggal ke "YYYY-MM-DD"
+                          $tanggal_tmtpg = "$tahun-$bulan-$hari";
+                          ?>
                             <label for="tmt_pangkat_golongan" class="form-label">TMT Pangkat Golongan</label>
-                            <input id="tmt_pangkat_golongan" name="tmt_pangkat_golongan" type="date" class="form-control" value="<?= date('Y-m-d', strtotime($list['tmt_pangkat_golongan'])) ?>">
+                            <input id="tmt_pangkat_golongan" name="tmt_pangkat_golongan" type="date" class="form-control" value="<?= $tanggal_tmtpg ?>">
                         </div>
 
                         <div class="col-md-4">
@@ -82,8 +89,15 @@
                         </div>
 
                         <div class="col-md-4">
+                          <?php
+                          $tanggal_databasetmtjp = $list['tmt_jabatan_pekerjaan'];
+                          // Membagi tanggal menjadi komponen (hari, bulan, tahun)
+                          list($hari, $bulan, $tahun) = explode('/', $tanggal_databasetmtjp);
+                          // Mengonversi format tanggal ke "YYYY-MM-DD"
+                          $tanggal_tmtjp = "$tahun-$bulan-$hari";
+                          ?>
                             <label for="tmt_jabatan_pekerjaan" class="form-label">TMT Jabatan Pekerjaan</label>
-                            <input id="tmt_jabatan_pekerjaan" name="tmt_jabatan_pekerjaan" type="date" class="form-control" value="<?= date('Y-m-d', strtotime($list['tmt_jabatan_pekerjaan'])) ?>">
+                            <input id="tmt_jabatan_pekerjaan" name="tmt_jabatan_pekerjaan" type="date" class="form-control" value="<?= $tanggal_tmtjp ?>">
                         </div>
 
                         <div class="col-md-4">
@@ -98,16 +112,26 @@
 
                         <div class="col-md-4">
                             <label for="tgllahir" class="form-label">Tanggal Lahir</label>
-                            <input id="tgllahir" name="tgllahir" type="date" class="form-control" value="<?= date('Y-m-d', strtotime($list['tgl_lahir'])) ?>">
+                            <?php
+                            $tanggal_database = $list['tgl_lahir'];
+                            // Membagi tanggal menjadi komponen (hari, bulan, tahun)
+                            list($hari, $bulan, $tahun) = explode('/', $tanggal_database);
+                            // Mengonversi format tanggal ke "YYYY-MM-DD"
+                            $tanggal_dikonversi = "$tahun-$bulan-$hari";
+                            ?>
+                            <input id="tgllahir" name="tgllahir" type="date" class="form-control" value="<?= $tanggal_dikonversi ?>">
                         </div>
 
                         <div class="col-md-4">
                             <label for="jeniskelamin" class="form-label">Jenis Kelamin</label>
                             <select id="jeniskelamin" name="jeniskelamin" class="form-select">
                                 <!-- <option selected>Choose...</option> -->
-                                <option value="Pria">Pria</option>
-                                <option value="Perempuan">Perempuan</option>
-                                <option value="Lainnya">Lainnya</option>
+                                <option value="Laki - laki" <?php if ($list['jenis_kelamin'] == 'Laki - laki')
+                                  echo 'selected'; ?>>Laki - laki</option>
+                                <option value="Perempuan" <?php if ($list['jenis_kelamin'] == 'Perempuan')
+                                  echo 'selected'; ?>>Perempuan</option>
+                                <option value="Lainnya" <?php if ($list['jenis_kelamin'] == 'Lainnya')
+                                  echo 'selected'; ?>>Lainnya</option>
                             </select>
                         </div>
 

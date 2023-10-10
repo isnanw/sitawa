@@ -92,7 +92,7 @@
                             <label for="jeniskelamin" class="form-label">Jenis Kelamin</label>
                             <select id="jeniskelamin" name="jeniskelamin" class="form-select">
                                 <!-- <option selected>Choose...</option> -->
-                                <option value="Pria">Pria</option>
+                                <option value="Laki - laki">Laki - laki</option>
                                 <option value="Perempuan">Perempuan</option>
                                 <option value="Lainnya">Lainnya</option>
                             </select>
